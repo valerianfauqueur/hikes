@@ -8,7 +8,9 @@
 
     <ScrollView
         android:layout_width="0dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -17,16 +19,18 @@
             android:layout_height="wrap_content"
             app:alignContent="stretch"
             app:alignItems="stretch"
-            app:flexWrap="wrap">
+            app:flexWrap="wrap"
+            app:layout_flexBasisPercent="100%">
 
 
             <ImageButton
                 android:id="@+id/imageButton3"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:contentDescription="@string/todo"
                 android:scaleType="fitXY"
                 app:layout_flexBasisPercent="50%"
-                app:srcCompat="@drawable/add_picture" android:contentDescription="@string/todo" />
+                app:srcCompat="@drawable/add_picture" />
 
 
             <ImageView
@@ -35,19 +39,21 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/todo"
                 android:scaleType="fitXY"
                 android:src="@drawable/day1"
-                app:layout_flexBasisPercent="50%" android:contentDescription="@string/todo" />
+                app:layout_flexBasisPercent="50%" />
 
             <ImageView
-            android:id="@+id/image2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/day2"
-            app:layout_flexBasisPercent="50%" android:contentDescription="@string/todo" />
+                android:id="@+id/image2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/todo"
+                android:scaleType="centerCrop"
+                android:src="@drawable/day2"
+                app:layout_flexBasisPercent="50%" />
 
             <ImageView
                 android:id="@+id/image3"
@@ -55,10 +61,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/todo"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/day3"
-                app:layout_flexBasisPercent="50%" android:contentDescription="@string/todo" />
+                app:layout_flexBasisPercent="50%" />
 
             <ImageView
                 android:id="@+id/image4"
@@ -66,10 +73,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/todo"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/day2"
-                app:layout_flexBasisPercent="50%" android:contentDescription="@string/todo" />
+                app:layout_flexBasisPercent="50%" />
 
             <ImageView
                 android:id="@+id/image5"
@@ -77,10 +85,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/todo"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/day1"
-                app:layout_flexBasisPercent="50%" android:contentDescription="@string/todo" />
+                app:layout_flexBasisPercent="50%" />
 
             <ImageView
                 android:id="@+id/image6"
@@ -88,10 +97,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/todo"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/day2"
-                app:layout_flexBasisPercent="50%" android:contentDescription="@string/todo" />
+                app:layout_flexBasisPercent="50%" />
 
             <ImageView
                 android:id="@+id/image7"
@@ -105,17 +115,17 @@
                 app:layout_flexBasisPercent="50%" />
 
 
-
             <ImageView
                 android:id="@+id/image8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/todo"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/day3"
-                app:layout_flexBasisPercent="50%" android:contentDescription="@string/todo" />
+                app:layout_flexBasisPercent="50%" />
 
             <ImageView
                 android:id="@+id/image9"
@@ -123,10 +133,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/todo"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/day2"
-                app:layout_flexBasisPercent="50%" android:contentDescription="@string/todo" />
+                app:layout_flexBasisPercent="50%" />
 
             <ImageView
                 android:id="@+id/image10"
@@ -134,10 +145,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/todo"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/day1"
-                app:layout_flexBasisPercent="50%" android:contentDescription="@string/todo" />
+                app:layout_flexBasisPercent="50%" />
 
             <ImageView
                 android:id="@+id/image11"
@@ -145,10 +157,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/todo"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/day2"
-                app:layout_flexBasisPercent="50%" android:contentDescription="@string/todo" />
+                app:layout_flexBasisPercent="50%" />
 
             <ImageView
                 android:id="@+id/image12"
@@ -156,16 +169,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/todo"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/day3"
-                app:layout_flexBasisPercent="50%" android:contentDescription="@string/todo" />
-
-
+                app:layout_flexBasisPercent="50%" />
 
 
         </com.google.android.flexbox.FlexboxLayout>
-
 
 
     </ScrollView>
