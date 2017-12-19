@@ -193,7 +193,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/rubik_light"
-                                android:text="aurelienm garde votre animal pour vous"
+                                android:text="Vous avez gardé cet animal pour emilia9"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -270,7 +270,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/rubik_light"
-                                android:text="aurelienm garde votre animal pour vous"
+                                android:text="Vous avez gardé cet animal pour emilia9"
                                 android:textSize="13sp" />
 
                             <TextView
@@ -347,7 +347,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/rubik_light"
-                                android:text="aurelienm garde votre animal pour vous"
+                                android:text="Vous avez gardé cet animal pour emilia9"
                                 android:textSize="13sp" />
 
                             <TextView
