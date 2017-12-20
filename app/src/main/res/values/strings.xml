@@ -4,6 +4,11 @@
     <string name="action_settings">Settings</string>
     <string name="section_title">%1$s</string>
     <string name="section_content">%1$s</string>
+    <string name="bouton2">bouton2</string>
+    <string name="bouton3">bouton3</string>
+    <string name="bouton4">bouton4</string>
+    <string name="coucou">coucou</string>
+    <string name="todo">TODO</string>
     <string name="title_activity_feed">Feed</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
