@@ -28,4 +28,11 @@
     <string name="todo17">TODO</string>
     <string name="todo18">TODO</string>
     <string name="todo19">TODO</string>
+    <string name="title_activity_feed">Feed</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="app_label">Hikes</string>
+    <string name="search_hint">Rechercher une annonce</string>
+    <string name="search_title">test</string>
 </resources>
