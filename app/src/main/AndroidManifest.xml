@@ -9,25 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".OnboardingActivity" />
-        <activity android:name=".GardeActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".OnboardingActivity" />
+        <activity android:name=".GardeActivity"/>
+
         <activity android:name=".OnboardingActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".MonitoringActivity"></activity>
-        <activity android:name=".MedicalActivity"></activity>
+        <activity android:name=".MonitoringActivity"/>
+        <activity android:name=".MedicalActivity"/>
         <activity
             android:name=".FeedActivity"
-            android:label="@string/title_activity_feed"></activity>
+            android:label="@string/title_activity_feed"/>
     </application>
 
 </manifest>
