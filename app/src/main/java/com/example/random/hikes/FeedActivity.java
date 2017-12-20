@@ -1,17 +1,12 @@
 package com.example.random.hikes;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,14 +26,18 @@ public class FeedActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                case R.id.navigation_announcement:
+                    mTextMessage.setText(R.string.announcements_nav_title);
                     return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                case R.id.navigation_keep:
+                    mTextMessage.setText(R.string.keep_nav_title);
+                    Intent keepIntent = new Intent(FeedActivity.this, KeepActivity.class);
+                    startActivity(keepIntent);
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                case R.id.navigation_health:
+                    mTextMessage.setText(R.string.health_nav_title);
+                    Intent healthIntent = new Intent(FeedActivity.this, HealthActivity.class);
+                    startActivity(healthIntent);
                     return true;
             }
             return false;

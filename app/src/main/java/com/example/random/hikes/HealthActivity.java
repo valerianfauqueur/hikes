@@ -3,12 +3,11 @@ package com.example.random.hikes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class GardeActivity extends AppCompatActivity {
-    
+public class HealthActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_garde);
+        setContentView(R.layout.activity_health);
     }
 }

@@ -35,4 +35,7 @@
     <string name="app_label">Hikes</string>
     <string name="search_hint">Rechercher une annonce</string>
     <string name="search_title">test</string>
+    <string name="announcements_nav_title">Annonces</string>
+    <string name="keep_nav_title">Mes gardes</string>
+    <string name="health_nav_title">Santé</string>
 </resources>
