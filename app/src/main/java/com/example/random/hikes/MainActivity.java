@@ -3,9 +3,12 @@ package com.example.random.hikes;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+
 import com.example.random.hikes.Utils;
 
 public class MainActivity extends AppCompatActivity {
+
 
     public static final String PREF_USER_FIRST_TIME = "user_first_time";
     boolean isUserFirstTime;
@@ -17,11 +20,15 @@ public class MainActivity extends AppCompatActivity {
         isUserFirstTime = Boolean.valueOf(Utils.readSharedSetting(MainActivity.this, PREF_USER_FIRST_TIME, "true"));
         Intent introIntent = new Intent(MainActivity.this, OnboardingActivity.class);
         introIntent.putExtra(PREF_USER_FIRST_TIME, isUserFirstTime);
+        Intent feedIntent = new Intent(MainActivity.this, FeedActivity.class);
 
         if (isUserFirstTime)
             startActivity(introIntent);
 
         if(!isUserFirstTime)
-            setContentView(R.layout.activity_main);
+            startActivity(feedIntent);
+
+
+       // AnnouncementCard qsd = (AnnouncementCard) getIntent().getExtras().getParcelable("qsdqsd");
     }
 }
