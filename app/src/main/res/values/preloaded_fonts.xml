@@ -3,6 +3,8 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/rubik_bold</item>
         <item>@font/rubik_light</item>
+        <item>@font/lato_italic</item>
+        <item>@font/rubik</item>
         <item>@font/rubik_medium</item>
     </array>
 </resources>
