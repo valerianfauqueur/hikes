@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="226dp"
+        android:background="@color/cyan"
+        android:clipToPadding="false"
+        android:layout_marginBottom="18dp"
+        card_view:cardElevation="2dp"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardBackgroundColor="@color/cyan">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/card_gradient">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="14dp"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp">
+
+                <TextView
+                    android:id="@+id/card_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/imageView"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:fontFamily="@font/rubik_medium"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    tools:text="Mathias le labrador" />
+
+                <TextView
+                    android:id="@+id/dash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/card_title"
+                    android:layout_marginEnd="2dp"
+                    android:layout_toEndOf="@+id/card_title"
+                    android:fontFamily="@font/lato_italic"
+                    android:text="-"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/card_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/card_title"
+                    android:layout_marginEnd="2dp"
+                    android:layout_toEndOf="@+id/dash"
+                    android:fontFamily="@font/lato_italic"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    tools:text="14" />
+
+
+                <TextView
+                    android:id="@+id/card_price_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/card_title"
+                    android:layout_toEndOf="@+id/card_price"
+                    android:fontFamily="@font/lato_italic"
+                    android:text="€"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <RatingBar
+                    android:id="@+id/card_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:progressDrawable="@drawable/custom_rating"
+                    android:scaleX="0.6"
+                    android:scaleY="0.6"
+                    android:stepSize="1.0"
+                    android:transformPivotX="0dp"
+                    android:transformPivotY="26dp" />
+
+
+                <TextView
+                    android:id="@+id/card_dist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="2dp"
+                    android:layout_toStartOf="@+id/card_dist_unit"
+                    android:fontFamily="@font/lato_italic"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    tools:text="24" />
+
+                <TextView
+                    android:id="@+id/card_dist_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/lato_italic"
+                    android:text="km"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="8dp"
+                    android:layout_toStartOf="@+id/card_dist"
+                    card_view:srcCompat="@drawable/geoloc" />
+            </RelativeLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
