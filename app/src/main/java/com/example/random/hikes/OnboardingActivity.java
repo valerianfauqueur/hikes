@@ -2,6 +2,7 @@ package com.example.random.hikes;
 
 import android.animation.ArgbEvaluator;
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,15 +40,14 @@ public class OnboardingActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
-    ImageButton mNextBtn;
-    Button mSkipBtn, mFinishBtn;
+    Button mNextBtn, mFinishBtn;
 
     ImageView zero, one, two;
     ImageView[] indicators;
 
     int lastLeftValue = 0;
 
-    CoordinatorLayout mCoordinator;
+    ConstraintLayout mCoordinator;
 
 
     static final String TAG = "PagerActivity";
@@ -68,15 +67,14 @@ public class OnboardingActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        mNextBtn = (ImageButton) findViewById(R.id.intro_btn_next);
-        mSkipBtn = (Button) findViewById(R.id.intro_btn_skip);
-        mFinishBtn = (Button) findViewById(R.id.intro_btn_finish);
+        mNextBtn = (Button) findViewById(R.id.intro_btn_next);
+        mFinishBtn = (Button) findViewById(R.id.intro_btn_inscription);
 
         zero = (ImageView) findViewById(R.id.intro_indicator_0);
         one = (ImageView) findViewById(R.id.intro_indicator_1);
         two = (ImageView) findViewById(R.id.intro_indicator_2);
 
-        mCoordinator = (CoordinatorLayout) findViewById(R.id.main_content);
+        mCoordinator = (ConstraintLayout) findViewById(R.id.contraint_container);
 
         indicators = new ImageView[]{zero, one, two};
 
@@ -120,11 +118,6 @@ public class OnboardingActivity extends AppCompatActivity {
                         break;
                 }
 
-
-                mNextBtn.setVisibility(position == 2 ? View.GONE : View.VISIBLE);
-                mFinishBtn.setVisibility(position == 2 ? View.VISIBLE : View.GONE);
-
-
             }
 
             @Override
@@ -136,18 +129,10 @@ public class OnboardingActivity extends AppCompatActivity {
         mNextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                page += 1;
-                mViewPager.setCurrentItem(page, true);
-            }
-        });
-
-        mSkipBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+                Utils.saveSharedSetting(OnboardingActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
                 finish();
-                Intent LoginIntent = new Intent(OnboardingActivity.this, MainActivity.class);
-                startActivity(LoginIntent);
+                Intent mainIntent = new Intent(OnboardingActivity.this, MainActivity.class);
+                startActivity(mainIntent);
             }
         });
 
@@ -158,8 +143,8 @@ public class OnboardingActivity extends AppCompatActivity {
                 Utils.saveSharedSetting(OnboardingActivity.this, MainActivity.PREF_USER_FIRST_TIME, "false");
                 // start login activity
                 finish();
-                Intent LoginIntent = new Intent(OnboardingActivity.this, MainActivity.class);
-                startActivity(LoginIntent);
+                Intent mainIntent = new Intent(OnboardingActivity.this, MainActivity.class);
+                startActivity(mainIntent);
 
             }
         });

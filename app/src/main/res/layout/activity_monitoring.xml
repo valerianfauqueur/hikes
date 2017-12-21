@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/contraint_container"
     tools:context="com.example.random.hikes.MonitoringActivity">
 
     <android.support.v7.widget.Toolbar
@@ -56,8 +57,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:scaleType="fitXY"
+                android:background="@android:color/transparent"
                 app:layout_flexBasisPercent="50%"
-                app:srcCompat="@drawable/add_picture" />
+                app:srcCompat="@drawable/add_photo" />
 
 
             <ImageView
@@ -67,7 +69,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/day1"
+                android:src="@drawable/dec_19"
                 app:layout_flexBasisPercent="50%" />
 
             <ImageView
@@ -77,7 +79,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/day2"
+                android:src="@drawable/dec_18"
                 app:layout_flexBasisPercent="50%" />
 
             <ImageView
@@ -88,7 +90,7 @@
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/day3"
+                android:src="@drawable/dec_17"
                 app:layout_flexBasisPercent="50%" />
 
             <ImageView
@@ -99,7 +101,7 @@
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/day2"
+                android:src="@drawable/dec_16"
                 app:layout_flexBasisPercent="50%" />
 
             <ImageView
@@ -110,85 +112,7 @@
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/day1"
-                app:layout_flexBasisPercent="50%" />
-
-            <ImageView
-                android:id="@+id/image6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/day2"
-                app:layout_flexBasisPercent="50%" />
-
-            <ImageView
-                android:id="@+id/image7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/day3"
-                app:layout_flexBasisPercent="50%" />
-
-
-            <ImageView
-                android:id="@+id/image8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/day3"
-                app:layout_flexBasisPercent="50%" />
-
-            <ImageView
-                android:id="@+id/image9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/day2"
-                app:layout_flexBasisPercent="50%" />
-
-            <ImageView
-                android:id="@+id/image10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/day1"
-                app:layout_flexBasisPercent="50%" />
-
-            <ImageView
-                android:id="@+id/image11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/day2"
-                app:layout_flexBasisPercent="50%" />
-
-            <ImageView
-                android:id="@+id/image12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:cropToPadding="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/day3"
+                android:src="@drawable/dec_15"
                 app:layout_flexBasisPercent="50%" />
 
 

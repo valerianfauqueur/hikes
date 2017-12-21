@@ -10,6 +10,7 @@ import android.support.v7.view.ActionMode;
 import android.support.v7.widget.CardView;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +22,7 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class AnnouncementActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener, AppCompatCallback {
 
@@ -29,6 +31,7 @@ public class AnnouncementActivity extends YouTubeBaseActivity implements YouTube
     private CardView card;
     private AnnouncementData announcementData;
     private AppCompatDelegate delegate;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
 
     @Override
@@ -52,6 +55,9 @@ public class AnnouncementActivity extends YouTubeBaseActivity implements YouTube
         // Add dynamic announcement data
         initAnnouncementData();
 
+        bindGuardClick();
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
     }
 
     private void initAnnouncementData() {
@@ -110,6 +116,25 @@ public class AnnouncementActivity extends YouTubeBaseActivity implements YouTube
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, layoutHeight);
         layoutParams.setMargins(cardMargin,cardMargin,cardMargin,0);
         card.setLayoutParams(layoutParams);
+    }
+
+    private void bindGuardClick() {
+        Button guardBtn = findViewById(R.id.action_btn_guard);
+
+        guardBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("title_annonce", announcementData.cardTitle);
+                bundle.putString("price_day_annonce", announcementData.cardPrice);
+                bundle.putString("distance_map_annonce", announcementData.cardDist);
+                bundle.putString("stars_annonce", Integer.toString(announcementData.cardRating));
+
+                mFirebaseAnalytics.logEvent("checkout_cart_annonce", bundle);
+
+                Toast.makeText(getApplicationContext(), "Votre demande de garde a bien été envoyé", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override

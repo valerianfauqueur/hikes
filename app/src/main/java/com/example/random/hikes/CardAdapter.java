@@ -2,6 +2,7 @@ package com.example.random.hikes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.List;
 
@@ -60,6 +63,15 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.AnnouncementVi
                 Context mContext = (Context) v.getContext();
                 Intent announcementIntent = new Intent(mContext, AnnouncementActivity.class);
                 announcementIntent.putExtra("announcement", announcement);
+
+                FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(mContext);
+                Bundle bundle = new Bundle();
+                bundle.putString("title_annonce", announcement.cardTitle);
+                bundle.putString("price_day_annonce", announcement.cardPrice);
+                bundle.putString("distance_map_annonce", announcement.cardDist);
+                bundle.putString("stars_annonce", Integer.toString(announcement.cardRating));
+
+                mFirebaseAnalytics.logEvent("annonce_content", bundle);
                 mContext.startActivity(announcementIntent);
             }
         });
