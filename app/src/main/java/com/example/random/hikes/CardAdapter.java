@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -15,9 +16,12 @@ import java.util.List;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.AnnouncementViewHolder> {
 
+    private List<AnnouncementData> announcements;
+    private RecyclerView mRecyclerView;
 
     public static class AnnouncementViewHolder extends RecyclerView.ViewHolder {
         private final Context context;
+        ImageView cardImage;
         CardView card;
         TextView cardTitle;
         RatingBar cardRating;
@@ -31,22 +35,12 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.AnnouncementVi
             cardRating = (RatingBar)itemView.findViewById(R.id.card_rating);
             cardDist = (TextView)itemView.findViewById(R.id.card_dist);
             cardPrice = (TextView)itemView.findViewById(R.id.card_price);
+            cardImage = (ImageView) itemView.findViewById(R.id.announcement_image);
             context = (Context) itemView.getContext();
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final Intent intent;
-                    intent =  new Intent(context, MainActivity.class);
-                    context.startActivity(intent);
-                }
-            });
         }
     }
 
-    List<AnnouncementCard> announcements;
-
-    CardAdapter(List<AnnouncementCard> announcements){
+    CardAdapter(List<AnnouncementData> announcements){
         this.announcements = announcements;
     }
 
@@ -58,6 +52,17 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.AnnouncementVi
     @Override
     public AnnouncementViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card, viewGroup, false);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int itemPosition = mRecyclerView.getChildLayoutPosition(v);
+                AnnouncementData announcement = announcements.get(itemPosition);
+                Context mContext = (Context) v.getContext();
+                Intent announcementIntent = new Intent(mContext, AnnouncementActivity.class);
+                announcementIntent.putExtra("announcement", announcement);
+                mContext.startActivity(announcementIntent);
+            }
+        });
         return new AnnouncementViewHolder(v);
     }
 
@@ -67,6 +72,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.AnnouncementVi
         cardViewHolder.cardPrice.setText(announcements.get(i).cardPrice);
         cardViewHolder.cardRating.setRating(announcements.get(i).cardRating);
         cardViewHolder.cardDist.setText(announcements.get(i).cardDist);
+        cardViewHolder.cardImage.setBackgroundResource(announcements.get(i).cardPicture);
     }
 
 
@@ -74,5 +80,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.AnnouncementVi
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+
+        mRecyclerView = recyclerView;
     }
 }

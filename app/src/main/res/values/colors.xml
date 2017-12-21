@@ -13,4 +13,8 @@
     <color name="card1">#0b3c5d</color>
     <color name="card2">#328CC1</color>
     <color name="card3">#FFCE00</color>
+    <color name="divider">#3F1D2731</color>
+    <color name="text_title">#7a1d2731</color>
+    <color name="text_title_dark">#1d2731</color>
+    <color name="twilight_blue">#0b3c5d</color>
 </resources>

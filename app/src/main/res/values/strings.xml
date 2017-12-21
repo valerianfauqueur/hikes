@@ -38,4 +38,11 @@
     <string name="announcements_nav_title">Annonces</string>
     <string name="keep_nav_title">Mes gardes</string>
     <string name="health_nav_title">Santé</string>
+    <string name="player_error">Error initializing YouTube player: %s</string>
+    <string name="seek_to">Jump To</string>
+    <string name="seek_to_hint">Seconds</string>
+    <string name="dash">-</string>
+    <string name="currency">€</string>
+    <string name="dist_unit">km</string>
+    <string name="desc_icon">location icon</string>
 </resources>

@@ -13,12 +13,14 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FeedActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private List<AnnouncementCard> announcements;
+    private List<AnnouncementData> announcements;
+    private RecyclerView mRecyclerView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -27,19 +29,17 @@ public class FeedActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_announcement:
-                    mTextMessage.setText(R.string.announcements_nav_title);
                     return true;
                 case R.id.navigation_keep:
-                    mTextMessage.setText(R.string.keep_nav_title);
                     Intent keepIntent = new Intent(FeedActivity.this, KeepActivity.class);
                     startActivity(keepIntent);
                     return true;
                 case R.id.navigation_health:
-                    mTextMessage.setText(R.string.health_nav_title);
                     Intent healthIntent = new Intent(FeedActivity.this, HealthActivity.class);
                     startActivity(healthIntent);
                     return true;
             }
+
             return false;
         }
     };
@@ -49,39 +49,48 @@ public class FeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.announcement_rv);
+        mRecyclerView = (RecyclerView) findViewById(R.id.announcement_rv);
 
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
 
-        // use a linear layout manager
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        // specify an adapter (see also next example)
         initializeData();
+
+        TextView announcementNumber = (TextView) findViewById(R.id.announcement_number);
+        announcementNumber.setText(Integer.toString(announcements.size()));
         CardAdapter mAdapter = new CardAdapter(announcements);
         mRecyclerView.setAdapter(mAdapter);
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_announcement);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     private void initializeData(){
         announcements = new ArrayList<>();
-
+        List<String> animalAttributes = Arrays.asList("Labrador", "Gentil", "Docile");
 
         for(int l = 20, i = 0; i < l; i++) {
             announcements.add(
-                    new AnnouncementCard("Rodolf le cerf", 3, "56", "15")
+                    new AnnouncementData(
+                            "Pinpin le pingouin",
+                            3,
+                            "56",
+                            "15",
+                            animalAttributes,
+                            "Aurélien Marrast",
+                            "Chambre double et simple dans une belle maison sont disponibles à Baron's Court." +
+                                    " À distance de marche de la Tamise à Hammersmith avec de grands pubs anglais traditionnels," +
+                                    " du théâtre et des restaurants. La station de métro se trouve à 7 minutes à pied, à 16 minutes en " +
+                                    "métro de Piccadilly Circus (Westend / Soho) à 8-10 minutes de Knightsbridge (Harrods) et de Hyde Park.",
+                            "hCyTyXDkZ9M",
+                            R.drawable.penguin,
+                            "penguin")
             );
         }
-
-
-       // Intent i = new Intent(this, MainActivity.class);
-       // i.putExtra("qsdqsd", announcements.get(0));
     }
 
 
@@ -92,5 +101,4 @@ public class FeedActivity extends AppCompatActivity {
 
         return true;
     }
-
 }

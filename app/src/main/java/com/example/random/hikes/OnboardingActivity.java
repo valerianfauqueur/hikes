@@ -198,11 +198,14 @@ public class OnboardingActivity extends AppCompatActivity {
         ImageView img;
 
         int[] bgs = new int[]{R.drawable.first, R.drawable.second, R.drawable.third};
-        String[] titles = {"POSTEZ VOS ANNONCES !", "RECOMMANDEZ-LES !", "RECHERCHEZ UNE GARDE !"};
+        String[] titles = {"Votre animal est entre de \n" +
+                "bonnes mains", "Où que vous soyez, \n" +
+                "votre animal sera à côté", "Les gardiens Hikes, \n" +
+                "un protecteur pour votre animal"};
         String[] contents = {
-                "Emensis itaque difficultatibus multis et nive obrutis callibus plurimis ubi prope Rauracum ventum est ad supercilia fluminis Rheni",
-                "Emensis itaque difficultatibus multis et nive obrutis callibus plurimis ubi prope Rauracum ventum est ad supercilia fluminis Rheni",
-                "Emensis itaque difficultatibus multis et nive obrutis callibus plurimis ubi prope Rauracum ventum est ad supercilia fluminis Rheni"
+                "Hikes a pour objectif de proposer la garde d’animaux de compagnie entre particuliers. Elle mise sur la réassurance du propriétaire par rapport à la garde.",
+                "Que vous soyez en Italie ou à 2 km de votre animal de compagnie, Hikes s’occupe de vous donner un suivi authentique pour vous.",
+                "Les gardiens Hikes jouent le rôle de propriétaire quand vous êtes absent. Leur réputation est évalué en fonction de sa garde d’un animal de compagnie."
         };
 
         public PlaceholderFragment() {

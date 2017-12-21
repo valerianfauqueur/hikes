@@ -29,21 +29,23 @@
                 style="@style/TextAppearance.AppCompat.Headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
                 android:layout_marginTop="48dp"
-                android:textSize="20sp"
+                android:fontFamily="@font/rubik_medium"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
                 tools:text="PAGE ONE" />
 
             <TextView
-                style="@style/TextAppearance.AppCompat.Body1"
                 android:id="@+id/section_content"
+                style="@style/TextAppearance.AppCompat.Body1"
                 android:layout_width="294dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textSize="18sp"
+                android:fontFamily="@font/lato_light"
                 android:gravity="center"
-                tools:text="Add a long description here about your app's important feature."
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                tools:text="Add a long description here about your app's important feature." />
 
 
         </LinearLayout>

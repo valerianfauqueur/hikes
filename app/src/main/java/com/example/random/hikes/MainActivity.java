@@ -27,8 +27,5 @@ public class MainActivity extends AppCompatActivity {
 
         if(!isUserFirstTime)
             startActivity(feedIntent);
-
-
-       // AnnouncementCard qsd = (AnnouncementCard) getIntent().getExtras().getParcelable("qsdqsd");
     }
 }
