@@ -19,11 +19,11 @@ import java.util.List;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.AnnouncementViewHolder> {
 
-    private List<AnnouncementData> announcements;
+    private final Context context;
+    private List<AnnouncementInfo> announcements;
     private RecyclerView mRecyclerView;
 
     public static class AnnouncementViewHolder extends RecyclerView.ViewHolder {
-        private final Context context;
         ImageView cardImage;
         CardView card;
         TextView cardTitle;
@@ -39,12 +39,12 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.AnnouncementVi
             cardDist = (TextView)itemView.findViewById(R.id.card_dist);
             cardPrice = (TextView)itemView.findViewById(R.id.card_price);
             cardImage = (ImageView) itemView.findViewById(R.id.announcement_image);
-            context = (Context) itemView.getContext();
         }
     }
 
-    CardAdapter(List<AnnouncementData> announcements){
+    CardAdapter(List<AnnouncementInfo> announcements, Context context){
         this.announcements = announcements;
+        this.context = context;
     }
 
     @Override
@@ -59,17 +59,17 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.AnnouncementVi
             @Override
             public void onClick(View v) {
                 int itemPosition = mRecyclerView.getChildLayoutPosition(v);
-                AnnouncementData announcement = announcements.get(itemPosition);
+                AnnouncementInfo announcement = announcements.get(itemPosition);
                 Context mContext = (Context) v.getContext();
                 Intent announcementIntent = new Intent(mContext, AnnouncementActivity.class);
                 announcementIntent.putExtra("announcement", announcement);
 
                 FirebaseAnalytics mFirebaseAnalytics = FirebaseAnalytics.getInstance(mContext);
                 Bundle bundle = new Bundle();
-                bundle.putString("title_annonce", announcement.cardTitle);
-                bundle.putString("price_day_annonce", announcement.cardPrice);
-                bundle.putString("distance_map_annonce", announcement.cardDist);
-                bundle.putString("stars_annonce", Integer.toString(announcement.cardRating));
+                bundle.putString("title_annonce", announcement.title);
+                bundle.putString("price_day_annonce", announcement.price);
+                bundle.putString("distance_map_annonce", announcement.distance);
+                bundle.putString("stars_annonce", Integer.toString(announcement.rating));
 
                 mFirebaseAnalytics.logEvent("annonce_content", bundle);
                 mContext.startActivity(announcementIntent);
@@ -80,11 +80,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.AnnouncementVi
 
     @Override
     public void onBindViewHolder(AnnouncementViewHolder cardViewHolder, int i) {
-        cardViewHolder.cardTitle.setText(announcements.get(i).cardTitle);
-        cardViewHolder.cardPrice.setText(announcements.get(i).cardPrice);
-        cardViewHolder.cardRating.setRating(announcements.get(i).cardRating);
-        cardViewHolder.cardDist.setText(announcements.get(i).cardDist);
-        cardViewHolder.cardImage.setBackgroundResource(announcements.get(i).cardPicture);
+        cardViewHolder.cardTitle.setText(announcements.get(i).title);
+        cardViewHolder.cardPrice.setText(announcements.get(i).price);
+        cardViewHolder.cardRating.setRating(announcements.get(i).rating);
+        cardViewHolder.cardDist.setText(announcements.get(i).distance);
+        cardViewHolder.cardImage.setBackgroundResource(context.getResources().getIdentifier(announcements.get(i).animal, "drawable", "com.example.random.hikes"));
     }
 
 

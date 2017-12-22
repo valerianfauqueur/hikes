@@ -8,16 +8,25 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,7 +38,6 @@ import java.util.List;
 public class FeedActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private List<AnnouncementData> announcements;
     private RecyclerView mRecyclerView;
     private FirebaseAnalytics mFirebaseAnalytics;
 
@@ -46,11 +54,6 @@ public class FeedActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         initializeData();
-
-        TextView announcementNumber = (TextView) findViewById(R.id.announcement_number);
-        announcementNumber.setText(Integer.toString(announcements.size()));
-        CardAdapter mAdapter = new CardAdapter(announcements);
-        mRecyclerView.setAdapter(mAdapter);
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -86,27 +89,35 @@ public class FeedActivity extends AppCompatActivity {
     }
 
     private void initializeData(){
-        announcements = new ArrayList<>();
-        List<String> animalAttributes = Arrays.asList("Labrador", "Gentil", "Docile");
 
-        for(int l = 20, i = 0; i < l; i++) {
-            announcements.add(
-                    new AnnouncementData(
-                            "Pinpin le pingouin",
-                            3,
-                            "56",
-                            "15",
-                            animalAttributes,
-                            "Aurélien Marrast",
-                            "Chambre double et simple dans une belle maison sont disponibles à Baron's Court." +
-                                    " À distance de marche de la Tamise à Hammersmith avec de grands pubs anglais traditionnels," +
-                                    " du théâtre et des restaurants. La station de métro se trouve à 7 minutes à pied, à 16 minutes en " +
-                                    "métro de Piccadilly Circus (Westend / Soho) à 8-10 minutes de Knightsbridge (Harrods) et de Hyde Park.",
-                            "hCyTyXDkZ9M",
-                            R.drawable.penguin,
-                            "penguin")
-            );
-        }
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="https://gist.githubusercontent.com/anonymous/af5f008560cdec72a0e081b680dd9424/raw/cb4e764abb14a9cf58fe4c889eb84d3a36b1fc03/6737630a-e698-11e7-90ec-65715b0a3c26.json";
+        JsonObjectRequest announcementsRequest = new JsonObjectRequest(Request.Method.GET, url,null, new Response.Listener<JSONObject>(){
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        if (response != null) {
+                            Gson gson = new Gson();
+                            JSONArray jsonArray = response.optJSONArray("posts");
+                            Log.d("json", jsonArray.toString());
+                            AnnouncementInfo[] announcements = gson.fromJson(jsonArray.toString(), AnnouncementInfo[].class);
+                            TextView announcementNumber = (TextView) findViewById(R.id.announcement_number);
+                            announcementNumber.setText(Integer.toString(announcements.length));
+                            CardAdapter mAdapter = new CardAdapter(Arrays.asList(announcements), getApplicationContext());
+                            mRecyclerView.setAdapter(mAdapter);
+
+
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Request error", error.toString());
+                    }
+                }
+        );
+
+        queue.add(announcementsRequest);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

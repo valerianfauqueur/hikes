@@ -29,7 +29,7 @@ public class AnnouncementActivity extends YouTubeBaseActivity implements YouTube
     private static final int RECOVERY_REQUEST = 1;
     private YouTubePlayerView youTubeView;
     private CardView card;
-    private AnnouncementData announcementData;
+    private AnnouncementInfo announcementInfo;
     private AppCompatDelegate delegate;
     private FirebaseAnalytics mFirebaseAnalytics;
 
@@ -43,7 +43,7 @@ public class AnnouncementActivity extends YouTubeBaseActivity implements YouTube
         delegate.setContentView(R.layout.activity_announcement);
         initNavigateBack();
 
-        announcementData = getIntent().getExtras().getParcelable("announcement");
+        announcementInfo = getIntent().getExtras().getParcelable("announcement");
         youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
         youTubeView.initialize(Config.YOUTUBE_API_KEY, this);
 
@@ -53,14 +53,14 @@ public class AnnouncementActivity extends YouTubeBaseActivity implements YouTube
         cardAdaptStyle();
 
         // Add dynamic announcement data
-        initAnnouncementData();
+        initAnnouncementInfo();
 
         bindGuardClick();
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
     }
 
-    private void initAnnouncementData() {
+    private void initAnnouncementInfo() {
 
         CardView card = (CardView) findViewById(R.id.card);
         ImageView announcementImage = (ImageView) findViewById(R.id.announcement_image);
@@ -77,18 +77,18 @@ public class AnnouncementActivity extends YouTubeBaseActivity implements YouTube
         TextView guardPrice = (TextView) findViewById(R.id.guard_price);
         RatingBar bottomRating = (RatingBar) findViewById(R.id.bottom_rating);
 
-        announcementImage.setBackgroundResource(announcementData.cardPicture);
-        cardTitle.setText(announcementData.cardTitle);
-        cardRating.setRating(announcementData.cardRating);
-        bottomRating.setRating(announcementData.cardRating);
-        cardDist.setText(announcementData.cardDist);
-        cardPrice.setText(announcementData.cardPrice);
-        guardPrice.setText(announcementData.cardPrice +" €");
-        animalAttributes1.setText(announcementData.animalAttributes.get(0));
-        animalAttributes2.setText(announcementData.animalAttributes.get(1));
-        animalAttributes3.setText(announcementData.animalAttributes.get(2));
-        masterName.setText(announcementData.masterName);
-        masterDescription.setText(announcementData.masterDescription);
+        cardTitle.setText(announcementInfo.title);
+        cardRating.setRating(announcementInfo.rating);
+        bottomRating.setRating(announcementInfo.rating);
+        cardDist.setText(announcementInfo.distance);
+        cardPrice.setText(announcementInfo.price);
+        guardPrice.setText(announcementInfo.price +" €");
+        animalAttributes1.setText(announcementInfo.attributes.get(0));
+        animalAttributes2.setText(announcementInfo.attributes.get(1));
+        animalAttributes3.setText(announcementInfo.attributes.get(2));
+        masterName.setText(announcementInfo.master);
+        masterDescription.setText(announcementInfo.content);
+        announcementImage.setBackgroundResource(getApplicationContext().getResources().getIdentifier(announcementInfo.animal, "drawable", "com.example.random.hikes"));
     }
 
     private void initNavigateBack() {
@@ -125,10 +125,10 @@ public class AnnouncementActivity extends YouTubeBaseActivity implements YouTube
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("title_annonce", announcementData.cardTitle);
-                bundle.putString("price_day_annonce", announcementData.cardPrice);
-                bundle.putString("distance_map_annonce", announcementData.cardDist);
-                bundle.putString("stars_annonce", Integer.toString(announcementData.cardRating));
+                bundle.putString("title_annonce", announcementInfo.title);
+                bundle.putString("price_day_annonce", announcementInfo.price);
+                bundle.putString("distance_map_annonce", announcementInfo.distance);
+                bundle.putString("stars_annonce", Integer.toString(announcementInfo.rating));
 
                 mFirebaseAnalytics.logEvent("checkout_cart_annonce", bundle);
 
@@ -140,7 +140,7 @@ public class AnnouncementActivity extends YouTubeBaseActivity implements YouTube
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         if (!b) {
-            youTubePlayer.cueVideo(announcementData.youtubeLink);
+            youTubePlayer.cueVideo(announcementInfo.youtube);
         }
     }
 
